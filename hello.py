@@ -19,4 +19,9 @@ for tr in trs:
         rank = tr.select_one('td:nth-child(1) > img')['alt']
         title = a_tag.text
         rate = tr.select_one('td.point').text
-        print(rank, title, rate)
+        doc = {
+            'rank': rank,
+            'tltle': title,
+            'rate': rate
+        }
+        db.movies.insert_one(doc)
